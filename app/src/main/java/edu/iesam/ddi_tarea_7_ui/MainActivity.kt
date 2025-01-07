@@ -1,20 +1,25 @@
 package edu.iesam.ddi_tarea_7_ui
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.viewpager2.widget.ViewPager2
+import edu.iesam.ddi_tarea_7_ui.databinding.ActivityMainBinding
+import edu.iesam.ddi_tarea_7_ui.features.data.local.LocalListOfImages
+import edu.iesam.ddi_tarea_7_ui.features.presentation.CarouselAdapter
 
 class MainActivity : AppCompatActivity() {
+
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        val viewPager: ViewPager2 = findViewById(R.id.viewpager)
+        val listOfImages = LocalListOfImages().getList()
+        viewPager.adapter = CarouselAdapter(listOfImages)
     }
+
+
 }

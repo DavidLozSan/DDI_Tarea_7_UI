@@ -7,13 +7,312 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize"
+                app:menu="@menu/toolbar_menu"
+                app:navigationIcon="@drawable/baseline_arrow_back_24"
+                app:title="@string/zapatillas_title" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/carouselSize"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/padding"
+                    android:paddingEnd="@dimen/padding" />
+
+                <ImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="@dimen/profileSize"
+                    android:layout_height="@dimen/profileSize"
+                    android:layout_marginTop="@dimen/margin"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile_image"
+                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewpager" />
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin"
+                    android:text="@string/user_name"
+                    app:layout_constraintStart_toEndOf="@+id/profile_image"
+                    app:layout_constraintTop_toBottomOf="@+id/viewpager" />
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/ratingBar"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:numStars="5"
+                    android:rating="5"
+                    android:stepSize="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/profile_image"
+                    app:layout_constraintTop_toBottomOf="@+id/user_name" />
+
+                <TextView
+                    android:id="@+id/number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:text="@string/number"
+                    app:layout_constraintStart_toEndOf="@+id/ratingBar"
+                    app:layout_constraintTop_toBottomOf="@+id/user_name" />
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="@dimen/buttonWidth"
+                    android:layout_height="@dimen/buttonHeight"
+                    android:layout_marginStart="@dimen/margin"
+                    android:backgroundTint="@color/dark_grey"
+                    android:text="@string/button_text"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textButton"
+                    app:layout_constraintStart_toEndOf="@+id/profile_image"
+                    app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+                <ImageView
+                    android:id="@+id/hanger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:src="@drawable/hanger"
+                    app:layout_constraintBottom_toBottomOf="@id/button1"
+                    app:layout_constraintStart_toStartOf="@id/button1"
+                    app:layout_constraintTop_toTopOf="@id/button1" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_marginEnd="@dimen/padding"
+                    android:background="@drawable/button_radius"
+                    android:text="@string/button_text_2"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewpager" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/viewHeight"
+                    android:layout_marginTop="@dimen/margin"
+                    android:background="@android:color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+                <TextView
+                    android:id="@+id/tittle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:paddingStart="@dimen/padding"
+                    android:text="@string/zapatillas_title"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tittle_size"
+                    app:layout_constraintTop_toBottomOf="@+id/view" />
+
+                <TextView
+                    android:id="@+id/characteristics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:paddingStart="@dimen/padding"
+                    android:text="@string/characteristics"
+                    app:layout_constraintTop_toBottomOf="@+id/tittle" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:paddingStart="@dimen/padding"
+                    android:text="@string/price"
+                    app:layout_constraintTop_toBottomOf="@+id/characteristics" />
+
+                <TextView
+                    android:id="@+id/protection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:paddingStart="@dimen/padding"
+                    android:text="@string/protection_text"
+                    app:layout_constraintTop_toBottomOf="@+id/price" />
+
+                <ImageView
+                    android:id="@+id/security"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_security_24"
+                    app:layout_constraintStart_toEndOf="@+id/protection"
+                    app:layout_constraintTop_toBottomOf="@+id/price" />
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/background_grey"
+                    android:layout_marginTop="@dimen/margin"
+                    android:background="@color/grey"
+                    app:layout_constraintTop_toBottomOf="@+id/protection" />
+
+                <TextView
+                    android:id="@+id/description_tittle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:paddingStart="@dimen/padding"
+                    android:text="@string/description_tittle"
+                    app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/padding"
+                    android:layout_marginTop="@dimen/margin"
+                    android:text="@string/description_text"
+                    app:layout_constraintTop_toBottomOf="@+id/description_tittle" />
+
+                <View
+                    android:id="@+id/view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/background_grey"
+                    android:layout_marginTop="@dimen/margin"
+                    android:background="@color/grey"
+                    app:layout_constraintTop_toBottomOf="@+id/description" />
+
+                <ImageView
+                    android:id="@+id/hanger_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin"
+                    android:background="@drawable/icon_background"
+                    android:src="@drawable/hanger"
+                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+                <TextView
+                    android:id="@+id/armario_tittle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin"
+                    android:text="@string/armario_title"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/hanger_background"
+                    app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+                <TextView
+                    android:id="@+id/armario_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:paddingEnd="@dimen/padding"
+                    android:text="@string/armario_text"
+                    app:layout_constraintStart_toStartOf="@+id/armario_tittle"
+                    app:layout_constraintTop_toBottomOf="@+id/armario_tittle" />
+
+                <ImageView
+                    android:id="@+id/security_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:background="@drawable/icon_background"
+                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@drawable/baseline_security_24"
+                    app:layout_constraintTop_toBottomOf="@+id/armario_text" />
+
+                <TextView
+                    android:id="@+id/tasa_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:text="@string/tasa_title"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/security_background"
+                    app:layout_constraintTop_toTopOf="@+id/security_background" />
+
+                <TextView
+                    android:id="@+id/tasa_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin"
+                    android:text="@string/tasa_text"
+                    app:layout_constraintStart_toEndOf="@+id/hanger_background"
+                    app:layout_constraintEnd_toEndOf="@id/button2"
+                    app:layout_constraintTop_toBottomOf="@+id/tasa_title" />
+
+                <View
+                    android:id="@+id/view4"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/background_grey"
+                    android:layout_marginTop="@dimen/margin"
+                    android:background="@color/grey"
+                    app:layout_constraintTop_toBottomOf="@+id/tasa_text" />
+
+                <TextView
+                    android:id="@+id/shipment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:paddingStart="@dimen/padding"
+                    android:layout_marginTop="@dimen/margin"
+                    android:text="@string/shipment"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+                <TextView
+                    android:id="@+id/cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:paddingEnd="@dimen/padding"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:text="@string/cart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

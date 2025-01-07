@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding">16dp</dimen>
+    <dimen name="margin">8dp</dimen>
+    <dimen name="carouselSize">500dp</dimen>
+    <dimen name="profileSize">64dp</dimen>
+    <dimen name="buttonWidth">150dp</dimen>
+    <dimen name="buttonHeight">32dp</dimen>
+    <dimen name="textButton">10sp</dimen>
+    <dimen name="viewHeight">1dp</dimen>
+    <dimen name="tittle_size">20sp</dimen>
+    <dimen name="background_grey">30dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+
+</resources>
