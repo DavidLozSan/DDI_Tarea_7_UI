@@ -11,5 +11,8 @@
     <dimen name="tittle_size">20sp</dimen>
     <dimen name="background_grey">30dp</dimen>
     <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_extra_large">24dp</dimen>
+    <dimen name="space">16dp</dimen>
+    <dimen name="bottomBar">86dp</dimen>
 
 </resources>
