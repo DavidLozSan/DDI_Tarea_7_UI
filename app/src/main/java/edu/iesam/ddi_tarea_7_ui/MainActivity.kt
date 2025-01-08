@@ -35,6 +35,31 @@ class MainActivity : AppCompatActivity() {
     private fun setupView() {
         binding.apply {
 
+            // Escuchar cambios en el scroll (Toolbar)
+            nestedScrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+                if (scrollY > 300) { // Aparece la Toolbar al hacer scroll hacia abajo
+                    if (appBarLayout.visibility != View.VISIBLE) {
+                        appBarLayout.visibility = View.VISIBLE
+                        appBarLayout.animate()
+                            .translationY(0f)
+                            .alpha(1f)
+                            .setDuration(300)
+                            .start()
+                    }
+                } else { // Oculta la Toolbar cuando se desplaza hacia arriba
+                    if (appBarLayout.visibility == View.VISIBLE) {
+                        appBarLayout.animate()
+                            .translationY(-appBarLayout.height.toFloat())
+                            .alpha(0f)
+                            .setDuration(300)
+                            .withEndAction {
+                                appBarLayout.visibility = View.GONE
+                            }
+                            .start()
+                    }
+                }
+            }
+
             // Botón (Enviar)
             button2.setOnClickListener {
                 Toast.makeText(this@MainActivity, "Botón (Enviar) pulsado", Toast.LENGTH_SHORT)
@@ -105,6 +130,5 @@ class MainActivity : AppCompatActivity() {
             description.movementMethod = LinkMovementMethod.getInstance()
         }
     }
-
 
 }
